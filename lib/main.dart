@@ -32,6 +32,7 @@ class _DicePageState extends State<DicePage> {
   //staticki jezik za razliku od JS koji je dinamcicki
 
   int LeftDiceNumber = 1;
+  int RightDiceNumber = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -67,11 +68,13 @@ class _DicePageState extends State<DicePage> {
           Expanded(
             child: TextButton(
                 onPressed: () {
-                  print('Right button is pressed');
+                  setState(() {
+                    RightDiceNumber = Random().nextInt(6) + 1;
+                  });
                 },
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: Image.asset('images/dice1.png'),
+                  child: Image.asset('images/dice$RightDiceNumber.png'),
                 )),
           ),
         ],
