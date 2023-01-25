@@ -31,8 +31,8 @@ class _DicePageState extends State<DicePage> {
   //int je definisan datatype jer je dart
   //staticki jezik za razliku od JS koji je dinamcicki
 
-  int LeftDiceNumber = 1;
-  int RightDiceNumber = 1;
+  int leftDiceNumber = 1;
+  int rightDiceNumber = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,8 @@ class _DicePageState extends State<DicePage> {
                     //SetState je za promenu state, koju trigiruje
                     //onPress
 
-                    LeftDiceNumber = Random().nextInt(6) + 1;
+                    leftDiceNumber = Random().nextInt(6) + 1;
+                    rightDiceNumber = Random().nextInt(6) + 1;
                     // broj od 0 do max-1
                     //medjutim kad dodamo +1 ne moze da izbaci 0 i
                     //broj max - 1 ostaje max sto je 6
@@ -61,20 +62,23 @@ class _DicePageState extends State<DicePage> {
               },
               child: Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Image.asset('images/dice$LeftDiceNumber.png'),
+                child: Image.asset('images/dice$leftDiceNumber.png'),
               ),
             ),
           ),
           Expanded(
             child: TextButton(
                 onPressed: () {
-                  setState(() {
-                    RightDiceNumber = Random().nextInt(6) + 1;
-                  });
+                  setState(
+                    () {
+                      leftDiceNumber = Random().nextInt(6) + 1;
+                      rightDiceNumber = Random().nextInt(6) + 1;
+                    },
+                  );
                 },
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: Image.asset('images/dice$RightDiceNumber.png'),
+                  child: Image.asset('images/dice$rightDiceNumber.png'),
                 )),
           ),
         ],
